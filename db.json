@@ -1,7 +1,19 @@
 {
-    "cards": [
-        {
-            
-        }
-    ]
+  "cards": [
+    {
+      "id": 1,
+      "front": "Question 1",
+      "back": "Answer 1",
+      "lastModified": "2023-01-01T12:00:00Z",
+      "status": "Learned"
+    }
+  ],
+  "messages": [
+    {
+      "id": 1,
+      "name": "Question 1",
+      "email": "Answer 1",
+      "content": "Learned"
+    }
+  ]
 }

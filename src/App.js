@@ -1,20 +1,19 @@
-import "./styles.css";
-import Home from "./components/Home";
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./components/Home";
 
-export default function App() {
+function App() {
   const [flashCards, setFlashCards] = useState([]);
   const [fetchError, setFetchError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  const API_URL = "http://localhost:5500/db"; // Assuming your json-server is running on this port
+  const API_URL = "http://localhost:3001/cards";
 
   useEffect(() => {
     const fetchFlashCards = async () => {
       try {
         const res = await fetch(API_URL);
-        if (!res.ok) throw Error("Data has not been received");
+        if (!res.ok) throw new Error("Data has not been received");
         const flashCardsData = await res.json();
         setFlashCards(flashCardsData);
         setFetchError(null);
@@ -28,9 +27,23 @@ export default function App() {
     // Fetch data when the component mounts
     fetchFlashCards();
   }, []);
+
   return (
     <Router>
-      <Home />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Home
+              flashCards={flashCards}
+              fetchError={fetchError}
+              isLoading={isLoading}
+            />
+          }
+        />
+      </Routes>
     </Router>
   );
 }
+
+export default App;

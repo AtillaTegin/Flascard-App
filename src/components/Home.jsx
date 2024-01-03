@@ -1,8 +1,6 @@
 import React from "react";
-//import "./Home.css";
 import Projects from "./Projects";
 import content from "./content";
-import Footer from "./Footer";
 
 export default function Home() {
   return (
@@ -18,7 +16,6 @@ export default function Home() {
           />
         ))}
       </div>
-      <Footer />
     </div>
   );
 }

@@ -1,6 +1,5 @@
-import "./Projects.css";
+
 import { Link } from "react-router-dom";
-import { FaGithubSquare } from "react-icons/fa";
 
 export default function Projects(props) {
   return (
@@ -17,10 +16,10 @@ export default function Projects(props) {
         </div>
         <div className="y">
           <Link to={props.git} className="gitHub">
-            Github <FaGithubSquare />
+            Github 
           </Link>
           <Link to={props.link} className="youTube">
-            GitPage <FaGithubSquare />
+            GitPage 
           </Link>
         </div>
       </div>
