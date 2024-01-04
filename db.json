@@ -1,12 +1,75 @@
 {
   "cards": [
     {
-      "id": 1,
-      "front": "Question 1",
-      "back": "Answer 1",
-      "lastModified": "2023-01-01T12:00:00Z",
-      "status": "Learned"
-    }
+        "id": 1,
+        "front": "What is the capital of France?",
+        "back": "Paris",
+        "lastModified": "2023-01-01T12:00:00Z",
+        "status": "Learned"
+      },
+      {
+        "id": 2,
+        "front": "Who wrote 'Romeo and Juliet'?",
+        "back": "William Shakespeare",
+        "lastModified": "2023-01-02T12:30:00Z",
+        "status": "Want to Learn"
+      },
+      {
+        "id": 3,
+        "front": "What is the largest planet in our solar system?",
+        "back": "Jupiter",
+        "lastModified": "2023-01-03T14:45:00Z",
+        "status": "Noted"
+      },
+      {
+        "id": 4,
+        "front": "In which year did World War II end?",
+        "back": "1945",
+        "lastModified": "2023-01-04T09:15:00Z",
+        "status": "Learned"
+      },
+      {
+        "id": 5,
+        "front": "What is the powerhouse of the cell?",
+        "back": "Mitochondria",
+        "lastModified": "2023-01-05T16:20:00Z",
+        "status": "Want to Learn"
+      },
+      {
+        "id": 6,
+        "front": "Who painted the Mona Lisa?",
+        "back": "Leonardo da Vinci",
+        "lastModified": "2023-01-06T11:10:00Z",
+        "status": "Noted"
+      },
+      {
+        "id": 7,
+        "front": "What is the square root of 64?",
+        "back": "8",
+        "lastModified": "2023-01-07T13:55:00Z",
+        "status": "Learned"
+      },
+      {
+        "id": 8,
+        "front": "Which gas do plants absorb during photosynthesis?",
+        "back": "Carbon Dioxide",
+        "lastModified": "2023-01-08T10:25:00Z",
+        "status": "Want to Learn"
+      },
+      {
+        "id": 9,
+        "front": "Who is known as the 'Father of Computer Science'?",
+        "back": "Alan Turing",
+        "lastModified": "2023-01-09T14:00:00Z",
+        "status": "Noted"
+      },
+      {
+        "id": 10,
+        "front": "What is the currency of Japan?",
+        "back": "Japanese Yen",
+        "lastModified": "2023-01-10T12:40:00Z",
+        "status": "Learned"
+      }
   ],
   "messages": [
     {
