@@ -76,10 +76,31 @@ const FlashCards = () => {
       <AddCardForm onAddCard={handleAddCard} />
 
       <div className="controls-container">
-        {/* ... (your existing code) */}
+      <label>
+          Search:
+          <input type="text" value={searchText} onChange={(e) => setSearchText(e.target.value)} />
+        </label>
+        <button onClick={handleSearch}>Search</button>
       </div>
+      <div>
+        <label>
+          Filter by Status:
+          <select value={filterStatus} onChange={(e) => setFilterStatus(e.target.value)}>
+            <option value="All">All</option>
+            <option value="Learned">Learned</option>
+            <option value="Want to Learn">Want to Learn</option>
+            <option value="Noted">Noted</option>
+          </select>
+        </label>
+        <button onClick={handleFilter}>Filter</button>
+      </div>
+        <div className="control-item">
+          <button onClick={() => handleSort('front')}>Sort by Question</button>
+          <button onClick={() => handleSort('back')}>Sort by Answer</button>
+          <button onClick={() => handleSort('status')}>Sort by Status</button>
+          <button onClick={() => handleSort('lastModified')}>Sort by Last Modified</button>
+        </div>
 
-      {/* Flash Cards List */}
       <div className="flash-cards-list">
         {flashCards.map((card) => (
           <FlashCard
