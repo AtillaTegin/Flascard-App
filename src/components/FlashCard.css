@@ -1,0 +1,54 @@
+/* FlashCard.css */
+.flash-card {
+    width: 200px;
+    height: 300px;
+    perspective: 1000px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+  }
+  
+  .flash-card.flipped {
+    transform: rotateY(180deg);
+  }
+  
+  .front,
+  .back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .front {
+    background-color: #fff;
+    cursor: pointer;
+  }
+  
+  .back {
+    background-color: #3498db;
+    color: #fff;
+    transform: rotateY(180deg);
+  }
+  
+  .status-info,
+  .last-modified-info {
+    position: absolute;
+    font-size: 12px;
+    color: #666;
+  }
+  
+  .status-info {
+    bottom: 5px;
+    left: 10px;
+  }
+  
+  .last-modified-info {
+    bottom: 5px;
+    right: 10px;
+  }
+  

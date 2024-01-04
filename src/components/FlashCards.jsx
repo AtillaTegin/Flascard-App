@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import AddCardForm from './AddCardForm';
+import './FlashCards.css';
+import FlashCard from './FlashCard';
 
 const FlashCards = () => {
   const [flashCards, setFlashCards] = useState([]);
   const [fetchError, setFetchError] = useState(null);
+  const [searchText, setSearchText] = useState('');
+  const [filterStatus, setFilterStatus] = useState('All'); // Default to show all cards
 
   useEffect(() => {
     const fetchFlashCards = async () => {
@@ -36,21 +40,57 @@ const FlashCards = () => {
     });
   };
 
+  // Function to handle search
+  const handleSearch = () => {
+    const filteredCards = flashCards.filter(
+      (card) =>
+        card.front.toLowerCase().includes(searchText.toLowerCase()) ||
+        card.back.toLowerCase().includes(searchText.toLowerCase())
+    );
+    setFlashCards(filteredCards);
+  };
+
+  // Function to handle filtering by status
+  const handleFilter = () => {
+    const filteredCards =
+      filterStatus === 'All'
+        ? flashCards
+        : flashCards.filter((card) => card.status === filterStatus);
+    setFlashCards(filteredCards);
+  };
+
+  // Function to handle sorting
+  const handleSort = (attribute) => {
+    const sortedCards = [...flashCards].sort((a, b) => {
+      if (a[attribute] < b[attribute]) return -1;
+      if (a[attribute] > b[attribute]) return 1;
+      return 0;
+    });
+    setFlashCards(sortedCards);
+  };
+
   return (
-    <div>
+    <div className="flash-cards-container">
       <h1>Flash Cards</h1>
       {fetchError && <p>Error: {fetchError}</p>}
       <AddCardForm onAddCard={handleAddCard} />
-      <ul>
+
+      <div className="controls-container">
+        {/* ... (your existing code) */}
+      </div>
+
+      {/* Flash Cards List */}
+      <div className="flash-cards-list">
         {flashCards.map((card) => (
-          <li key={card.id}>
-            <p>Question: {card.front}</p>
-            <p>Answer: {card.back}</p>
-            <p>Status: {card.status}</p>
-            <p>Last Modified: {card.lastModified}</p>
-          </li>
+          <FlashCard
+            key={card.id}
+            question={card.front}
+            answer={card.back}
+            status={card.status}
+            lastModified={card.lastModified}
+          />
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

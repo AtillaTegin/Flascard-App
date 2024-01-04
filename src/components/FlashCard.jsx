@@ -1,43 +1,26 @@
-import React, { useState, useEffect } from 'react';
+// FlashCard.jsx
+import React, { useState } from 'react';
+import './FlashCard.css';
 
-const FlashCard = () => {
-  const [flashCards, setFlashCards] = useState([]);
-  const [fetchError, setFetchError] = useState(null);
+const FlashCard = ({ question, answer, status, lastModified }) => {
+  const [isFlipped, setIsFlipped] = useState(false);
 
-  useEffect(() => {
-    const fetchFlashCards = async () => {
-      try {
-        const res = await fetch('http://localhost:3001/cards');
-        if (!res.ok) throw new Error('Data has not been received');
-        const flashCardsData = await res.json();
-        setFlashCards(flashCardsData);
-        setFetchError(null);
-      } catch (e) {
-        setFetchError(e.message);
-      }
-    };
-
-    // Fetch data when the component mounts
-    fetchFlashCards();
-  }, []);
+  const handleCardClick = () => {
+    setIsFlipped(!isFlipped);
+  };
 
   return (
-    <div>
-      <h1>Flash Cards</h1>
-      {fetchError && <p>Error: {fetchError}</p>}
-      <ul>
-        {flashCards.map((card) => (
-          <li key={card.id}>
-            <p>Question: {card.front}</p>
-            <p>Answer: {card.back}</p>
-            <p>Status: {card.status}</p>
-            <p>Last Modified: {card.lastModified}</p>
-          </li>
-        ))}
-      </ul>
+    <div className={`flash-card ${isFlipped ? 'flipped' : ''}`} onClick={handleCardClick}>
+      <div className="front">
+        <p>{question}</p>
+        <div className="status-info">{status}</div>
+        <div className="last-modified-info">{lastModified}</div>
+      </div>
+      <div className="back">
+        <p>{answer}</p>
+      </div>
     </div>
   );
 };
 
 export default FlashCard;
-
